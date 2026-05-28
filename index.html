@@ -129,39 +129,52 @@
     }
 
     /* ── ABOUT ── */
-    .about-code {
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; } }
+
+    .about-card {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
       border-radius: 10px;
-      overflow: hidden;
+      padding: 1.5rem;
     }
-    .about-code-header {
-      background: var(--bg-card);
-      border-bottom: 1px solid var(--border);
-      padding: .6rem 1rem;
-      display: flex; align-items: center; gap: .5rem;
+    .about-card-label {
+      font-size: .72rem; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--accent-blue);
+      margin-bottom: 1rem; font-weight: 600;
     }
-    .dot { width: 12px; height: 12px; border-radius: 50%; }
-    .dot-red   { background: #ff5f56; }
-    .dot-yellow{ background: #ffbd2e; }
-    .dot-green { background: #27c93f; }
-    .about-code-filename {
-      margin-left: .5rem;
-      font-family: 'Fira Code', monospace;
-      font-size: .78rem; color: var(--text-muted);
+    .about-row {
+      display: flex; align-items: flex-start;
+      gap: .75rem; margin-bottom: .85rem;
     }
-    .about-code pre {
-      margin: 0; padding: 1.5rem 2rem;
-      font-family: 'Fira Code', monospace;
-      font-size: .88rem; line-height: 2;
-      overflow-x: auto;
-      white-space: pre;
+    .about-row:last-child { margin-bottom: 0; }
+    .about-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
+    .about-label { font-size: .75rem; color: var(--text-muted); margin-bottom: .15rem; }
+    .about-value { font-size: .9rem; color: var(--text-primary); font-weight: 500; line-height: 1.4; }
+
+    .expertise-list { display: flex; flex-direction: column; gap: .6rem; }
+    .expertise-item {
+      display: flex; align-items: flex-start; gap: .6rem;
+      font-size: .88rem; color: var(--text-primary);
     }
-    .json-key   { color: var(--accent-blue); }
-    .json-str   { color: #a5d6a7; }
-    .json-arr   { color: var(--text-muted); }
-    .json-brace { color: var(--accent-gold); }
-    .json-num   { color: #f08d49; }
+    .expertise-item::before {
+      content: '▸'; color: var(--accent-green);
+      flex-shrink: 0; font-size: .8rem; margin-top: .15rem;
+    }
+
+    .about-bio {
+      font-size: .9rem; color: var(--text-muted);
+      line-height: 1.8; grid-column: 1 / -1;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent-blue);
+      border-radius: 0 10px 10px 0;
+      padding: 1.25rem 1.5rem;
+    }
 
     /* ── TECH STACK ── */
     .tech-group { margin-bottom: 2rem; }
@@ -363,31 +376,79 @@
 <!-- ABOUT -->
 <section id="about">
   <h2 class="section-title">// About Me</h2>
-  <div class="about-code">
-    <div class="about-code-header">
-      <span class="dot dot-red"></span>
-      <span class="dot dot-yellow"></span>
-      <span class="dot dot-green"></span>
-      <span class="about-code-filename">michael_kiflai.json</span>
+  <p class="about-bio">
+    Experienced Software Developer and Hydrogeophysicist with over 5 years of expertise in backend development,
+    data analysis, and building scalable applications. Proficient in Java, Spring Boot, Python, R, and MATLAB,
+    with a strong focus on RESTful APIs, microservices, and PostgreSQL. Adept at designing robust systems and
+    optimizing data handling for complex technical and geoscientific challenges. Skilled in GIS, cloud deployment,
+    Agile methodologies, and collaborating with cross-functional teams to deliver innovative solutions at the
+    intersection of geoscience and artificial intelligence.
+  </p>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-card-label">Profile</div>
+
+      <div class="about-row">
+        <span class="about-icon">👤</span>
+        <div>
+          <div class="about-label">Full Name</div>
+          <div class="about-value">Michael E. Kiflai, Ph.D., PG.</div>
+        </div>
+      </div>
+
+      <div class="about-row">
+        <span class="about-icon">📍</span>
+        <div>
+          <div class="about-label">Location</div>
+          <div class="about-value">Austin, Texas, USA</div>
+        </div>
+      </div>
+
+      <div class="about-row">
+        <span class="about-icon">💼</span>
+        <div>
+          <div class="about-label">Current Role</div>
+          <div class="about-value">Geophysicist &amp; Software Developer<br/>Advanced Geosciences Inc / SAGA Geophysics</div>
+        </div>
+      </div>
+
+      <div class="about-row">
+        <span class="about-icon">🎓</span>
+        <div>
+          <div class="about-label">Education</div>
+          <div class="about-value">Ph.D. Geoscience — FIU (2020)</div>
+        </div>
+      </div>
+
+      <div class="about-row">
+        <span class="about-icon">🪪</span>
+        <div>
+          <div class="about-label">License</div>
+          <div class="about-value">Professional Geoscientist (PG) — Texas</div>
+        </div>
+      </div>
+
+      <div class="about-row">
+        <span class="about-icon">🌐</span>
+        <div>
+          <div class="about-label">Languages</div>
+          <div class="about-value">English (Fluent) &nbsp;·&nbsp; Tigrinya (Native)</div>
+        </div>
+      </div>
     </div>
-    <pre><span class="json-brace">{</span>
-  <span class="json-key">"name"</span>:         <span class="json-str">"Michael E. Kiflai, Ph.D., PG."</span>,
-  <span class="json-key">"title"</span>:        <span class="json-str">"Hydrogeophysicist | Data Scientist | Software Developer | GEO AI"</span>,
-  <span class="json-key">"location"</span>:     <span class="json-str">"Austin, Texas, USA"</span>,
-  <span class="json-key">"current_role"</span>: <span class="json-str">"Geophysicist &amp; Developer @ Advanced Geosciences Inc / SAGA Geophysics"</span>,
-  <span class="json-key">"license"</span>:      <span class="json-str">"Professional Geoscientist (PG) — Texas Board"</span>,
-  <span class="json-key">"education"</span>:    <span class="json-str">"Ph.D. Geoscience — Florida International University (2020)"</span>,
-  <span class="json-key">"experience"</span>:   <span class="json-str">"5+ years backend development, hydrogeophysics &amp; data analysis"</span>,
-  <span class="json-key">"expertise"</span>: <span class="json-arr">[</span>
-    <span class="json-str">"GEO AI — Geoscience × Artificial Intelligence"</span>,
-    <span class="json-str">"Backend Java Development (Spring Boot, REST APIs, PostgreSQL)"</span>,
-    <span class="json-str">"Full-Stack Web (React, Next.js, FastAPI, Supabase)"</span>,
-    <span class="json-str">"Hydrogeophysics, Groundwater Modeling &amp; GIS"</span>,
-    <span class="json-str">"Machine Learning &amp; Predictive Modeling for Geoscience"</span>
-  <span class="json-arr">]</span>,
-  <span class="json-key">"languages"</span>: <span class="json-arr">[</span><span class="json-str">"English (Fluent)"</span>, <span class="json-str">"Tigrinya (Native)"</span><span class="json-arr">]</span>,
-  <span class="json-key">"open_to"</span>:      <span class="json-str">"GEO AI collaborations, software engineering, geoscience research"</span>
-<span class="json-brace">}</span></pre>
+
+    <div class="about-card">
+      <div class="about-card-label">Core Expertise</div>
+      <div class="expertise-list">
+        <div class="expertise-item">GEO AI — Geoscience × Artificial Intelligence</div>
+        <div class="expertise-item">Backend Java Development (Spring Boot, REST APIs, PostgreSQL)</div>
+        <div class="expertise-item">Full-Stack Web Development (React, Next.js, FastAPI, Supabase)</div>
+        <div class="expertise-item">Hydrogeophysics, Groundwater Modeling &amp; GIS</div>
+        <div class="expertise-item">Machine Learning &amp; Predictive Modeling for Geoscience</div>
+        <div class="expertise-item">Cloud Deployment, CI/CD &amp; Agile Methodologies</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -449,89 +510,44 @@
   <h2 class="section-title">// Projects</h2>
   <div class="projects-grid">
 
-    <div class="project-card live">
-      <div class="project-top">
-        <span class="project-name">Hub for Trucks</span>
-        <span class="project-live-badge">● Live</span>
-      </div>
-      <p class="project-desc">Comprehensive freight load board and transportation management system. Connects shippers and carriers with real-time load posting, trip management, and document handling.</p>
-      <div class="project-stack">
-        <span class="stack-tag">React</span><span class="stack-tag">Supabase</span>
-        <span class="stack-tag">Cloudflare</span><span class="stack-tag">TypeScript</span>
-      </div>
-      <div class="project-links">
-        <a class="project-link" href="https://hubfortrucks.com" target="_blank">🌐 hubfortrucks.com</a>
-        <span class="project-private-badge">Private Repo</span>
-      </div>
-    </div>
-
-    <div class="project-card live">
-      <div class="project-top">
-        <span class="project-name">USCIS Case Tracker</span>
-        <span class="project-live-badge">● Live</span>
-      </div>
-      <p class="project-desc">Subscription-based immigration case tracking app with real-time USCIS API integration, Google OAuth, email notifications, and tiered Stripe plans (Free → Enterprise).</p>
-      <div class="project-stack">
-        <span class="stack-tag">FastAPI</span><span class="stack-tag">React</span>
-        <span class="stack-tag">MongoDB</span><span class="stack-tag">Stripe</span>
-      </div>
-      <div class="project-links">
-        <a class="project-link" href="https://myimmiservices.com" target="_blank">🌐 myimmiservices.com</a>
-        <span class="project-private-badge">Private Repo</span>
-      </div>
-    </div>
-
     <div class="project-card">
       <div class="project-top">
-        <span class="project-name">Mesob Africa</span>
-        <span class="project-private-badge">Private Repo</span>
+        <span class="project-name">TEnmo — Money Transfer App</span>
       </div>
-      <p class="project-desc">African literature e-commerce platform for e-books, audiobooks, podcasts and kids content. Features DRM streaming, author uploads, AI content scanning, and Stripe payments.</p>
+      <p class="project-desc">Peer-to-peer money transfer platform with JWT-secured transactions, Spring Security authentication, and full CRUD via PostgreSQL. CLI frontend backed by a Spring Boot RESTful API server.</p>
       <div class="project-stack">
-        <span class="stack-tag">Next.js</span><span class="stack-tag">Cloudflare Workers</span>
-        <span class="stack-tag">D1</span><span class="stack-tag">Stripe</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-top">
-        <span class="project-name">Media Converter</span>
-        <span class="project-private-badge">Private Repo</span>
-      </div>
-      <p class="project-desc">FFmpeg-powered media converter with both GUI (Tkinter) and CLI interfaces. Converts and splits audio/video across 18+ formats with batch processing and real-time progress.</p>
-      <div class="project-stack">
-        <span class="stack-tag">Python</span><span class="stack-tag">TypeScript</span>
-        <span class="stack-tag">FFmpeg</span><span class="stack-tag">Tkinter</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-top">
-        <span class="project-name">TEnmo — Money Transfer</span>
-        <span class="project-live-badge" style="background:rgba(88,166,255,.15);color:var(--accent-blue);border-color:rgba(88,166,255,.4);">Public</span>
-      </div>
-      <p class="project-desc">Peer-to-peer money transfer platform with JWT-secured transactions, Spring Security authentication, and full CRUD via PostgreSQL. CLI frontend backed by Spring Boot server.</p>
-      <div class="project-stack">
-        <span class="stack-tag">Java</span><span class="stack-tag">Spring Boot</span>
-        <span class="stack-tag">PostgreSQL</span><span class="stack-tag">JWT</span>
+        <span class="stack-tag">Java</span>
+        <span class="stack-tag">Spring Boot</span>
+        <span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">Spring Security</span>
+        <span class="stack-tag">JWT</span>
+        <span class="stack-tag">REST API</span>
       </div>
       <div class="project-links">
-        <a class="project-link" href="https://github.com/Michaelekiflai/Tenmo" target="_blank">⌥ View Repo</a>
+        <a class="project-link" href="https://github.com/Michaelekiflai/Tenmo" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          View on GitHub
+        </a>
       </div>
     </div>
 
     <div class="project-card">
       <div class="project-top">
         <span class="project-name">Vendo-Matic 800</span>
-        <span class="project-live-badge" style="background:rgba(88,166,255,.15);color:var(--accent-blue);border-color:rgba(88,166,255,.4);">Public</span>
       </div>
-      <p class="project-desc">Command-line virtual vending machine with deposit, product selection, and change-return logic. Inventory via text files with timestamped transaction logging throughout.</p>
+      <p class="project-desc">Command-line virtual vending machine with deposit, product selection, and change-return logic. Inventory managed via text files with timestamped transaction logging and full JUnit test coverage.</p>
       <div class="project-stack">
-        <span class="stack-tag">Java</span><span class="stack-tag">OOP</span>
-        <span class="stack-tag">File I/O</span><span class="stack-tag">JUnit</span>
+        <span class="stack-tag">Java</span>
+        <span class="stack-tag">OOP</span>
+        <span class="stack-tag">File I/O</span>
+        <span class="stack-tag">JUnit</span>
+        <span class="stack-tag">CLI</span>
       </div>
       <div class="project-links">
-        <a class="project-link" href="https://github.com/Michaelekiflai/Vending-Machine-Software" target="_blank">⌥ View Repo</a>
+        <a class="project-link" href="https://github.com/Michaelekiflai/Vending-Machine-Software" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          View on GitHub
+        </a>
       </div>
     </div>
 
